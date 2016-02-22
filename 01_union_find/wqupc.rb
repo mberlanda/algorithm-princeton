@@ -1,6 +1,6 @@
 require 'test/unit'
 
-class Wqupc
+class WeightedQuickUnionUF
   # weighted quick union path compressed
   attr_reader :array
 
@@ -42,10 +42,10 @@ class Wqupc
 end
 
 
-class WqupcTest < Test::Unit::TestCase
+class WeightedQuickUnionUFTest < Test::Unit::TestCase
   
   def setup
-    @obj = Wqupc.new(10)
+    @obj = WeightedQuickUnionUF.new(10)
   end
 
   def test_initialize
