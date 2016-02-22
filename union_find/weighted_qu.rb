@@ -7,6 +7,10 @@ class QuickUnionUF
   def initialize n
     @n = n-1
     @array = (0..@n).to_a
+    @size = {}
+    @array.each do |k|
+      @size[k] = 0
+    end
   end
 
   def connected x, y
@@ -15,7 +19,14 @@ class QuickUnionUF
 
   def union x, y
     i, j = root(x), root(y)
-    @array[i] = j
+    return if i == j
+    if @size[i] < @size[j]
+      @array[i] = j
+      @size[j] += @size[i]
+    else
+      @array[j] = i
+      @size[i] += @size[j]
+    end
   end
 
   private
