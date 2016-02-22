@@ -1,7 +1,7 @@
 require 'test/unit'
 
-class QuickUnionUF
- 
+class Wqupc
+  # weighted quick union path compressed
   attr_reader :array
 
   def initialize n
@@ -42,10 +42,10 @@ class QuickUnionUF
 end
 
 
-class QuickUnionUFTest < Test::Unit::TestCase
+class WqupcTest < Test::Unit::TestCase
   
   def setup
-    @obj = QuickUnionUF.new(10)
+    @obj = Wqupc.new(10)
   end
 
   def test_initialize

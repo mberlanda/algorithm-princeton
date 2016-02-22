@@ -1,7 +1,7 @@
 import unittest
 
-class QuickUnionUF:
-
+class Wqupc:
+    # weighted quick union path compressed
     def __init__(self, n):
       self.n = n
       self.array = list(range(n))
@@ -27,10 +27,10 @@ class QuickUnionUF:
         i = self.array[i]
       return i
 
-class QuickUnionUFTest(unittest.TestCase):
+class WqupcTest(unittest.TestCase):
   
     def setUp(self):
-        self.obj = QuickUnionUF(10)
+        self.obj = Wqupc(10)
 
     def test_initialize(self):
         expected = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
