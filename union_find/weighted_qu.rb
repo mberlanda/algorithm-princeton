@@ -32,7 +32,10 @@ class QuickUnionUF
   private
 
   def root (i)
-    i = @array[i] until i == @array[i]
+    while i != @array[i] do
+      @array[i] = @array[@array[i]]
+      i = @array[i]
+    end
     return i
   end
 

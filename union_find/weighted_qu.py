@@ -23,6 +23,7 @@ class QuickUnionUF:
 
     def __root(self, i):
       while i != self.array[i]:
+        self.array[i] = self.array[self.array[i]]
         i = self.array[i]
       return i
 
