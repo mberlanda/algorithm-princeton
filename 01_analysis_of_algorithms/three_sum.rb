@@ -28,7 +28,7 @@ end
 BM_ARRAY = (-10000..10000).map { rand }
 
 Benchmark.bm do |x|
-  x.report { 50.times do;  ThreeSum.new(BM_ARRAY.sample(100)); end }
+  x.report { 50.times do;  ThreeSum.new(BM_ARRAY.sample(100)).count(); end }
 end
 
 # Test object
