@@ -40,6 +40,6 @@ class QuickFindUFTest < Test::Unit::TestCase
   def test_union
     @obj.union(2, 3)
     assert_equal(true, @obj.connected(2, 3))
-  end    
+  end
 
 end
