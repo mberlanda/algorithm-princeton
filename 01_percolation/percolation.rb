@@ -17,7 +17,6 @@ class Percolation
     @qf.union(get_qf_index(i, j), @top) if i == 1
     @qf.union(get_qf_index(i, j), @bottom) if i == @size
 
-
     @qf.union(get_qf_index(i, j), get_qf_index(i, j - 1)) if (j > 1 && is_open(i, j - 1))
     @qf.union(get_qf_index(i, j), get_qf_index(i, j + 1)) if (j < @size && is_open(i, j + 1))
     @qf.union(get_qf_index(i, j), get_qf_index(i - 1 , j)) if (i > 1  && is_open(i - 1, j))
