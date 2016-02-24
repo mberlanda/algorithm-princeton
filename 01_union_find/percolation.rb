@@ -1,5 +1,6 @@
 require 'test/unit'
 
+
 # http://coursera.cs.princeton.edu/algs4/assignments/percolation.html
 class Percolation
   
