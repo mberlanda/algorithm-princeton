@@ -1,7 +1,7 @@
 require 'test/unit'
 require_relative 'node'
 
-class LinkedQueueOfStrings
+class LinkedQueue
 
   attr_reader :first, :last
 
@@ -38,12 +38,11 @@ class LinkedQueueOfStrings
   end
 end
 
-class LinkedQueueOfStringsTest < Test::Unit::TestCase
+class LinkedQueueTest < Test::Unit::TestCase
   
   def setup
-    @queue = LinkedQueueOfStrings.new
+    @queue = LinkedQueue.new
   end
-
 
   def test_is_empty
     assert_equal(true, @queue.is_empty)

@@ -19,12 +19,15 @@ class FixedCapacityStack
   end
 
   def push item
-    @s[@n] = item
-    @n += 1
+
     if @n == @capacity
       puts 'Stack is already full'
       new_stack
     end
+  
+    @s[@n] = item
+    @n += 1
+  
   end
 
   def pop
@@ -34,9 +37,8 @@ class FixedCapacityStack
       return item
     rescue Exception => e
       e.message
-    end 
+    end
   end
-
 end
 
 class FixedCapacityStackTest < Test::Unit::TestCase
@@ -63,6 +65,13 @@ class FixedCapacityStackTest < Test::Unit::TestCase
   def test_pop
     @stack.push('b')
     assert_equal('b', @stack.pop)
+  end
+
+  def test_full_capacity
+    (0..5).each do |x|
+      @stack.push(x)
+    end
+    assert_equal([5], @stack.s) 
   end
 
 end

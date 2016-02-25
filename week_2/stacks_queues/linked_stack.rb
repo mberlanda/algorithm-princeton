@@ -1,7 +1,7 @@
 require 'test/unit'
 require_relative 'node'
 
-class LinkedStackOfStrings
+class LinkedStack
 
   attr_reader :first
 
@@ -21,21 +21,28 @@ class LinkedStackOfStrings
   end
 
   def pop
-    item = @first.item
-    @first = @first.next
-    return item
+    begin
+      item = @first.item
+      @first = @first.next
+      return item
+    rescue Exception => e
+      e.message
+    end
   end
 end
 
-class LinkedStackOfStringsTest < Test::Unit::TestCase
+class LinkedStackTest < Test::Unit::TestCase
   
   def setup
-    @stack = LinkedStackOfStrings.new
+    @stack = LinkedStack.new
   end
-
 
   def test_is_empty
     assert_equal(true, @stack.is_empty)
+  end
+
+  def test_empty_pop
+    assert_raise(@stack.pop)
   end
 
   def test_push
