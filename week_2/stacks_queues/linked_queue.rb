@@ -23,6 +23,7 @@ class LinkedQueue
       @first = @last
     else
       oldlast.set_next(@last)
+      @last.set_previous(oldlast)
     end
   end
 

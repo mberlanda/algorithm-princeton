@@ -18,6 +18,7 @@ class LinkedStack
     @first = Node.new
     @first.set_item(item)
     @first.set_next(oldfirst)
+    oldfirst.set_previous = @first
   end
 
   def pop
