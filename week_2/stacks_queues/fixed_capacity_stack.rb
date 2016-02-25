@@ -1,13 +1,17 @@
 require 'test/unit'
 
-class FixedCapacityStackOfStrings
+class FixedCapacityStack
 
   attr_reader :s, :n
 
   def initialize capacity
+    new_stack
+    @capacity = capacity
+  end
+
+  def new_stack
     @s = Array.new
     @n = 0
-    @capacity = capacity
   end
 
   def is_empty
@@ -19,40 +23,36 @@ class FixedCapacityStackOfStrings
       @s[@n] = item
       @n += 1
     else
-      begin
-        raise 'Stack is already full'
-      rescue Exception => e
-        puts e.message
-      end
+      puts 'Stack is already full'
+      new_stack
     end
   end
 
   def pop
-    if !is_empty
+    begin
       item = @s[@n-1]
       @s[@n-1] = nil
       return item
-    else
-      begin
-        raise 'Stack is still empty'
-      rescue Exception => e
-        puts e.message
-        puts e.backtrace.inspect
-      end 
-    end
+    rescue Exception => e
+      e.message
+    end 
   end
 
 end
 
-class FixedCapacityStackOfStringsTest < Test::Unit::TestCase
+class FixedCapacityStackTest < Test::Unit::TestCase
   
   def setup
-    @stack = FixedCapacityStackOfStrings.new(5)
+    @stack = FixedCapacityStack.new(5)
   end
 
 
   def test_is_empty
     assert_equal(true, @stack.is_empty)
+  end
+
+  def test_empty_pop
+    assert_raise(@stack.pop)
   end
 
   def test_push
