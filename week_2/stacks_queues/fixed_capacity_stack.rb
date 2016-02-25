@@ -19,10 +19,9 @@ class FixedCapacityStack
   end
 
   def push item
-    if @n < @capacity
-      @s[@n] = item
-      @n += 1
-    else
+    @s[@n] = item
+    @n += 1
+    if @n == @capacity
       puts 'Stack is already full'
       new_stack
     end
