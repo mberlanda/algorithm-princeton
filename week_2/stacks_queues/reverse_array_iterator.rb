@@ -1,6 +1,5 @@
 require 'test/unit'
 require_relative 'fixed_capacity_queue'
-require_relative 'node'
 
 class ReverseArrayIterator
 
@@ -31,17 +30,16 @@ class ReverseArrayIterator
     end
   end
 
-  def remove
+  def previous
     begin
-      current = @a[@i]
-      item = current.item
-      current.previous.set_next(current.next) if has_next
-      current.next.set_previous(current.previous) if has_previous
-      @a.delete(current)
+      item = @a[@i+1].item
+      raise if !has_previous
+      @i += 1
       return item
     rescue Exception => e
       e.message
     end
+    
   end
 
 end
@@ -89,13 +87,14 @@ class FixedCapacityIteratorTest < Test::Unit::TestCase
     assert_raise(@iterator.next)
   end
 
-  def test_remove
+  def test_has_previous
+    assert_equal( false, @iterator.has_previous)
     @iterator.next
-    deleted = @iterator.a[@iterator.i]
-    @iterator.remove
-    current = @iterator.a[@iterator.i]
-    assert_equal(deleted.previous.item, current.previous.item)
-    assert_equal(deleted.next.item, current.item)
+    assert_equal( true, @iterator.has_previous)
+  end
+
+  def test_raise_previous
+    assert_raise(@iterator.previous)
   end
 
 end

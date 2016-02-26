@@ -1,6 +1,5 @@
 require 'test/unit'
 require_relative 'linked_queue'
-require_relative 'node'
 
 class LinkedIterator
 
