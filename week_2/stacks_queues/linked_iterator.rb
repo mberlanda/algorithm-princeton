@@ -11,29 +11,27 @@ class LinkedIterator
     @current = @l.first
   end
 
-  def has_next
-    @current.next != nil
-  end
-
   def has_previous
     @current.previous != nil
   end
 
-  def next
+  def has_next
+    @current.next != nil
+  end
+
+  def previous
     begin
       item = @current.item
-      @current = @current.next
+      @current = @current.previous
       return item
     rescue Exception => e
       e.message
     end
   end
 
-  def remove
+  def next
     begin
       item = @current.item
-      @current.previous.set_next(@current.next)
-      @current.next.set_previous(@current.previous)
       @current = @current.next
       return item
     rescue Exception => e
@@ -57,14 +55,31 @@ class LinkedIteratorTest < Test::Unit::TestCase
     assert_equal('a', @iterator.current.item)
   end
 
-  def test_next
+  def test_raise_previous
+    assert_raise(@iterator.previous)
+  end
+
+  def test_has_previous
+    assert_equal( false, @iterator.has_previous)
     @iterator.next
-    assert_equal('b', @iterator.current.item)
+    assert_equal( true, @iterator.has_previous)
   end
 
   def test_has_next
     @iterator.next
     assert_equal( true, @iterator.has_next)
+  end
+
+  def test_previous
+    item = @iterator.current.item
+    @iterator.next
+    @iterator.previous
+    assert_equal(item, @iterator.current.item)
+  end
+
+  def test_next
+    @iterator.next
+    assert_equal('b', @iterator.current.item)
   end
 
   def test_raise_next
@@ -73,13 +88,4 @@ class LinkedIteratorTest < Test::Unit::TestCase
     assert_raise(@iterator.next)
   end
 
-  def test_remove
-    @iterator.next
-    deleted = @iterator.current
-    @iterator.remove
-    current = @iterator.current
-    assert_equal(deleted.previous.item, current.previous.item)
-    assert_equal(deleted.next.item, current.item)
-
-  end
 end
