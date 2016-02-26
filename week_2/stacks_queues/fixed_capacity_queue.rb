@@ -3,7 +3,7 @@ require_relative 'node'
 
 class FixedCapacityQueue
 
-  attr_reader :q, :head, :tail
+  attr_reader :q, :head, :tail, :n
 
   def initialize capacity
     new_queue
