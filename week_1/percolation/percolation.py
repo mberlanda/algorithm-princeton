@@ -15,25 +15,25 @@ class Percolation:
     self.opened[i -1][j -1] = True
     
     if (i == 1):
-      self.qf.union(get_qf_index(i, j), self.top) 
+      self.qf.union(self.get_qf_index(i, j), self.top) 
     elif (i == self.size):
-      self.qf.union(get_qf_index(i, j), self.bottom) 
+      self.qf.union(self.get_qf_index(i, j), self.bottom) 
 
     if (j > 1 and self.is_open(i, j - 1)):
-      self.qf.union(get_qf_index(i, j), get_qf_index(i, j - 1)) 
+      self.qf.union(self.get_qf_index(i, j), self.get_qf_index(i, j - 1)) 
     if (j < self.size and self.is_open(i, j + 1)):
-      self.qf.union(get_qf_index(i, j), get_qf_index(i, j + 1)) 
+      self.qf.union(self.get_qf_index(i, j), self.get_qf_index(i, j + 1)) 
     if (i > 1  and self.is_open(i - 1, j)):
-      self.qf.union(get_qf_index(i, j), get_qf_index(i - 1 , j))
+      self.qf.union(self.get_qf_index(i, j), self.get_qf_index(i - 1 , j))
     if (i < self.size and self.is_open(i + 1, j)):
-      self.qf.union(get_qf_index(i, j), get_qf_index(i + 1 , j)) 
+      self.qf.union(self.get_qf_index(i, j), self.get_qf_index(i + 1 , j)) 
 
   def is_open(self, i, j):
     self.opened[i -1][j -1]
 
   def is_full(self, i, j):
     if (0 < i and i <= self.size and 0 < j and j <= self.size):
-      return self.qf.connected(self.top, get_qf_index(i, j)) 
+      return self.qf.connected(self.top, self.get_qf_index(i, j)) 
     else:
       return False
 
@@ -47,24 +47,25 @@ class RandomValues:
 
   def __init__(self, n):
     values = list(range(1, n+1))
-    sample = []
-    for x in values:
-      for y in values:
-        sample.append([x, y])
-    return shuffle(sample)
+    self.sample = []
+    for y in values:
+      self.sample += [[x,y] for x in values]
 
 class PercolationTest(unittest.TestCase):
 
   def test_percolation(self):
     n = 5
     perc = Percolation(n)
-    rv = RandomValues(n)
-
+    rv = RandomValues(n).sample
+    print(rv)
     c = 0
 
-    while (perc.percolates == True):
-      perc.open(rv[c][0], rv[c][1])
+    while (perc.percolates() == False):
+      print(rv[c])
+      perc.open(*rv[c])
+      print perc.percolates()
       c += 1
+      print perc.qf.array
 
     print("Pecolates after " + str(c) + " attempts")
 
