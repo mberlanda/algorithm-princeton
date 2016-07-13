@@ -7,8 +7,8 @@ I don't intend to provide the solutions of exercises or tests, but I want to rep
 I hope you enjoy and feel free to fork to add other algorithms or languages.
 
 Topics covered:
-- [01. Union Find](week_1/union_find)
-- [01. Analysis of Algorithms](week_1/analysis_of_algorithms)
-- [01. Percolation](week_1/percolation)
-- [02. Stacks and Queues](week_2/stack_queues)
-- [02. Elementary Sorts](week_2/elementary_sorts)
+- [01. Union Find](week_1/union_find/)
+- [01. Analysis of Algorithms](week_1/analysis_of_algorithms/)
+- [01. Percolation](week_1/percolation/)
+- [02. Stacks and Queues](week_2/stack_queues/)
+- [02. Elementary Sorts](week_2/elementary_sorts/)
