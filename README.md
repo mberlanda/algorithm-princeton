@@ -12,3 +12,4 @@ Topics covered:
 - [01. Percolation](week_1/percolation/)
 - [02. Stacks and Queues](week_2/stack_queues/)
 - [02. Elementary Sorts](week_2/elementary_sorts/)
+- [03. Mergesort](week_3/mergesort/)
