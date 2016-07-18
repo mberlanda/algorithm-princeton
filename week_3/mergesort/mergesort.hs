@@ -17,3 +17,15 @@ mergeSort [] = []
 mergeSort [x] = [x]
 mergeSort xs = merge (mergeSort lhalf) (mergeSort rhalf)
                where (lhalf, rhalf) = split xs
+
+-- second implementation inspired to https://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#Haskell
+mergePairs :: (Ord a) => [[a]] -> [[a]]
+mergePairs (x:y:zs) = merge x y : mergePairs zs
+mergePairs xs = xs
+
+mergeAll :: (Ord a) => [[a]] -> [a]
+mergeAll [x] = x
+mergeAll xs = mergeAll(mergePairs xs)
+
+mergeSortBottomUp :: (Ord a) => [a] -> [a]
+mergeSortBottomUp lst = mergeAll (map (\x -> [x]) lst)
