@@ -8,7 +8,7 @@ class MergeSort:
 
     def execute(self):
         self.merge_sort(self.ary)
-        return self.ary
+        return
 
     def merge_sort(self, lst):
         if len(lst) > 1:
@@ -63,7 +63,9 @@ class MergeSortTest(unittest.TestCase):
     def test_merge_sort(self):
         expected = list(range(10))
         self.assertNotEqual(self.obj.ary, expected)
-        self.assertEqual(self.obj.execute(), expected)
+
+        self.obj.execute()
+        self.assertEqual(self.obj.ary, expected)
 
 
 if __name__ == '__main__':
