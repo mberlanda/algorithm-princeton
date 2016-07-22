@@ -13,3 +13,4 @@ Topics covered:
 - [02. Stacks and Queues](week_2/stack_queues/)
 - [02. Elementary Sorts](week_2/elementary_sorts/)
 - [03. Mergesort](week_3/mergesort/)
+- [03. Quicksort](week_3/quicksort/)
