@@ -2,7 +2,7 @@
 
 This repository is inspired to [**Algorithms, Part I**](https://www.coursera.org/course/algs4partI) course of of Princeton University. More info can be found on the [homepage](http://algs4.cs.princeton.edu/home/) of this course on Princeton University website adn the [archive](http://www.cs.princeton.edu/courses/archive/spring16/cos226/lectures.php) of the lectures for spring 2016.
 
-I don't intend to provide the solutions of exercises or tests, but I want to replicate the approach used for Java algorithms in other programming languages (e.g. Ruby, Python, Perl).
+I don't intend to provide the solutions of exercises or tests, but I want to replicate the approach used for Java algorithms in other programming languages (e.g. Ruby, Python, Perl, Haskell).
 
 I hope you enjoy and feel free to fork to add other algorithms or languages.
 

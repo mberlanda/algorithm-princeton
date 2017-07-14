@@ -2,7 +2,7 @@ require 'test/unit'
 require 'benchmark'
 
 class ThreeSumBinarySearch
- 
+
   def initialize array=[]
     @array = array.sort
     @n = (@array.size) -1
@@ -25,7 +25,7 @@ class ThreeSumBinarySearch
 
     while (lo <= hi) do
       mid = lo + (hi - lo)/2
-      
+
       if key < @array[mid]
         hi = mid -1
       elsif key > @array[mid]
@@ -34,7 +34,7 @@ class ThreeSumBinarySearch
         return true
       end
     end
-    
+
     return false
   end
 
@@ -49,7 +49,7 @@ end
 
 # Test object
 class ThreeSumBinarySearchTest < Test::Unit::TestCase
-  
+
   def test_count
     arr1 = [-3, -2, -1, 0, 1, 2, 3]
     obj = ThreeSumBinarySearch.new(arr1)
